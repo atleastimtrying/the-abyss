@@ -1,0 +1,29 @@
+<h1>Listing plots</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>X</th>
+    <th>Y</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @plots.each do |plot| %>
+  <tr>
+    <td><%= plot.title %></td>
+    <td><%= plot.description %></td>
+    <td><%= plot.x %></td>
+    <td><%= plot.y %></td>
+    <td><%= link_to 'Show', plot %></td>
+    <td><%= link_to 'Edit', edit_plot_path(plot) %></td>
+    <td><%= link_to 'Destroy', plot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Plot', new_plot_path %>

@@ -7,8 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<header>
+  <h1>The Abyss</h1>
+  <h2>A text adventure by Anders Fisher and yourself!</h2>
+</header>
+<article>
 <%= yield %>
-
+</article>
+<footer>
+  <a href='http://andersfisher.com'>Anders Fisher</a>
+</footer>
 </body>
 </html>

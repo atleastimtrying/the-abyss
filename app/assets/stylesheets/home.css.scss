@@ -1,0 +1,26 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+*{
+  margin:0;
+  padding:0;
+  color:#333;
+}
+header{
+  max-width:600px;
+  margin: 0 auto;
+  padding:16px;
+  background:#333;
+  color:white;
+}
+article{
+  max-width:600px;
+  margin: 20px auto;
+  border: 1px solid #ccc;
+  border-radius:4px;
+  padding:16px;
+}
+section#history{
+  padding: 12px;
+  border: 1px solid #333;
+}
