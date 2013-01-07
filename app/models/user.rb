@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :password, :user_name, :x, :y
+  attr_accessible :email, :password, :user_name, :x, :y, :state
   validates :email, :length => { :maximum => 140 }
   validates :password, :length => { :maximum => 140 }
   validates :user_name, :length => { :maximum => 140 }

@@ -1,2 +1,14 @@
 <% # render '/users/login' %>
-<section id='history'></section>
+<div data-id="<%= @plot.id %>" data-x="<%= @plot.x %>" data-y="<%= @plot.y %>" class='actions'>
+  <h2><%= @plot.title %></h2>
+  <section>
+    <p><%= @plot.description %></p>
+  </section>
+</div>
+<nav>
+  <a href='/north'>North</a>
+  <a href='/south'>South</a>
+  <a href='/east'>East</a>
+  <a href='/west'>West</a>
+</nav>
+

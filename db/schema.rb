@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(:version => 20121224111103) do
 
   create_table "plots", :force => true do |t|
     t.string   "title"
+    t.string   "state"
     t.text     "description"
     t.integer  "x"
     t.integer  "y"

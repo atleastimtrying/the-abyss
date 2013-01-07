@@ -32,6 +32,15 @@ class PlotsController < ApplicationController
     end
   end
 
+  # GET /plots/fetch
+  def fetch
+    plot = Plot.where(:x=>params[:x]).where(:y=>params[:y]).first
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: plot }
+    end
+  end
+
   # GET /plots/1/edit
   def edit
     @plot = Plot.find(params[:id])

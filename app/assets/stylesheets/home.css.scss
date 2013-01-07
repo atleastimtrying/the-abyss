@@ -5,22 +5,41 @@
   margin:0;
   padding:0;
   color:#333;
+  text-shadow:0 1px 1px white;
 }
 header{
   max-width:600px;
   margin: 0 auto;
   padding:16px;
-  background:#333;
+  background:#eee;
   color:white;
+  h1{
+    font-size:24px;
+    line-height:32px;
+    margin-bottom:16px;
+  }
 }
 article{
   max-width:600px;
   margin: 20px auto;
   border: 1px solid #ccc;
   border-radius:4px;
+  background:#eee;
   padding:16px;
-}
-section#history{
-  padding: 12px;
-  border: 1px solid #333;
+  section{
+    overflow-y:scroll;
+    max-height:300px;
+  }
+  h2{
+    margin-bottom:16px;
+  }
+  p{
+    padding:16px;
+    border-bottom:1px solid #ccc;
+    box-shadow:1px 0 0 white;
+
+    &.action{
+      background:#ddd;
+    }
+  }
 }
