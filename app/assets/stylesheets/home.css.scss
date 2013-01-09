@@ -10,8 +10,10 @@
 header{
   max-width:600px;
   margin: 0 auto;
-  padding:16px;
+  padding:15px;
   background:#eee;
+  border: 1px solid #ccc;
+  border-radius:4px;
   color:white;
   h1{
     font-size:24px;
@@ -25,7 +27,7 @@ article{
   border: 1px solid #ccc;
   border-radius:4px;
   background:#eee;
-  padding:16px;
+  padding:15px;
   section{
     overflow-y:scroll;
     max-height:300px;
