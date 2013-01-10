@@ -1,40 +1,25 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
-class App 
-  constructor: ->
+
+class Navigator
+  constructor: (@app)->
     @plot =
       id: $('div').data('id')
       x: $('div').data('x')
       y: $('div').data('y')
       title: $('div h2').html()
       description: $('div section').html()
+    
     $('nav a').click @navClick
 
-  updateDom: (plot)=>
-    if plot
-      @plot = plot
-      $('div').data 'id', plot.id
-      $('div').data 'x', plot.x
-      $('div').data 'y', plot.y
-      $('div h2').html plot.title
-      $('div section').append "<p>#{plot.description}</p>"
-    else
-      $('div h2').html 'Nothingness'
-      $('div section').append "<p>you have reached the edge of the abyss nothing is here.</p>"
-    @scrollDown()
-
-  scrollDown: ->
-    objDiv = $ "section"
-    objDiv[0].scrollTop = objDiv[0].scrollHeight
-  
   navClick: (event)=>
     element = $ event.currentTarget
-    @requestPage element.attr('href').substring 1
+    @requestPlot element.attr('href').substring 1
     false
 
-  requestPage: (action)=>
-    $('div section').append "<p class='action'>You travelled #{action}.</p>"
+  requestPlot: (action)=>
+    $(@app).trigger 'travel', action
     x = @plot.x
     y = @plot.y
     y += 1 if action is 'north'
@@ -44,7 +29,59 @@ class App
     $.get "/plots/fetch.json",
       x: x
       y: y
-    , @updateDom
+    , @testPlot
+
+  testPlot: (plot)=>
+    if plot
+      @plot = plot
+      $(@app).trigger 'showPlot', plot
+    else
+      $(@app).trigger 'emptyPlot'
+    $(@app).trigger 'scrollDown'
+
+class Display
+  constructor: (@app)->
+    $(@app).bind 'emptyPlot', @emptyPlot
+    $(@app).bind 'showPlot', @showPlot
+    $(@app).bind 'travel', @travel
+
+  setTitle: (title)->
+    $('div h2').html title
+
+  setData: (id, x, y)->
+    $('div').data 'id', id
+    $('div').data 'x', x
+    $('div').data 'y', y
+
+  append: (string)->
+    $('div section').append string
+
+  travel: (event, action)=>
+    @append "<p class='action'>You travelled #{action}.</p>"
+
+  showPlot: (event, plot)=>
+    @setData plot.id, plot.x, plot.y
+    @setTitle plot.title
+    @append "<p>#{plot.description}</p>"
+
+  emptyPlot: =>
+    @setTitle 'Nothingness'
+    @append "<p>you have reached the edge of the abyss nothing is here.</p>"
+
+class Scroller
+  constructor: (@app)->
+    $(@app).bind 'scrollDown', @scrollDown
+  scrollDown: ->
+    objDiv = $ "section"
+    objDiv[0].scrollTop = objDiv[0].scrollHeight
+
+
+class App 
+  constructor: ->
+    @navigator = new Navigator @
+    @scroller = new Scroller @
+    @display = new Display @
+    #@input = new Input @
 
 $ ->
   window.app = new App
