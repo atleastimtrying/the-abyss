@@ -32,12 +32,28 @@ class PlotsController < ApplicationController
     end
   end
 
+  def getPlot (x, y)
+    Plot.where(:x => x).where(:y => y).first
+  end
   # GET /plots/fetch
   def fetch
-    plot = Plot.where(:x=>params[:x]).where(:y=>params[:y]).first
+    x = params[:x]
+    y = params[:y]
+    plot = getPlot x, y
+    north = getPlot x, (y.to_i + 1)
+    south = getPlot x, (y.to_i - 1)
+    east = getPlot (x.to_i - 1), y
+    west = getPlot (x.to_i + 1), y
     respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: plot }
+      format.json { 
+        render json: {
+          :plot => plot, 
+          :north => north, 
+          :south => south, 
+          :east => east, 
+          :west => west
+        } 
+      }
     end
   end
 
