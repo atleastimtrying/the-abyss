@@ -11,4 +11,6 @@
   <a href='/east'>East</a>
   <a href='/west'>West</a>
 </nav>
-
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+<%= render '/devise/sessions/new', :resource => User.new() , :resource_name => :user %>
