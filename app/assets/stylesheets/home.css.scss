@@ -58,6 +58,7 @@ article{
     background:white;
     border:1px solid #ccc;
     border-radius:4px;
+    box-shadow:inset 0 0 8px #ccc;
   }
   h2{
     margin-bottom:16px;
@@ -69,7 +70,7 @@ article{
     box-shadow:1px 0 0 white;
 
     &.action{
-      background:#ddd;
+      background:rgba(255,255,255,0.5);
     }
   }
 }
@@ -103,8 +104,8 @@ footer{
 }
 .modal{
   position:fixed;
-  width:300px;
-  margin:0 -166px;
+  width:500px;
+  margin:0 -266px;
   top:48px;
   left:50%;
   padding:15px;
@@ -118,6 +119,8 @@ footer{
     top:8px;
     right:12px;
     color:#aaa;
+    font-size:24px;
+    line-height:16px;
     &:hover{
       color:#666;
     }
@@ -153,7 +156,7 @@ footer{
     border-radius:4px;
     padding:7px;
     background:#777;
-    box-shadow:inset 0 0 4px #222;
+    box-shadow:inset 0 0 8px #666;
     border:1px solid #666;
     color:white;
     text-decoration:none;
