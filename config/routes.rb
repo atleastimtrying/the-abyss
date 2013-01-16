@@ -6,6 +6,9 @@ TheAbyss::Application.routes.draw do
   resources :users
 
   match 'plots/fetch' => 'plots#fetch'
+  match '/login' => 'home#login'
+  match '/signup' => 'home#signup'
+  match '/newplot' => 'home#newplot'
   resources :plots
 
   # The priority is based upon order of creation:

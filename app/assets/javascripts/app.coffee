@@ -3,6 +3,8 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 class window.App 
   constructor: ->
+    @user = no
+    @loggedin = no
     @navigator = new Navigator @
     @scroller = new Scroller @
     @display = new Display @
