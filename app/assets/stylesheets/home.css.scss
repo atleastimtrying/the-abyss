@@ -45,6 +45,7 @@ article{
   max-width:600px;
   margin: -1px auto;
   padding:16px 15px;
+  padding-bottom:64px;
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
   background:#eee;
@@ -94,10 +95,15 @@ footer{
   box-shadow:0 -4px 8px #ccc;
   border-top:1px solid #ccc;
   background:#D3D3DA;
-  padding:16px;
-  padding-top:15px;
+  width:100%;
+  bottom:0;
+  left:0;
   z-index:2;
-  position:relative;
+  position:fixed;
+  a{
+    margin:16px;
+    display:inline-block;
+  }
   a:hover{
     color:black;
   }
