@@ -68,11 +68,13 @@ class window.Modals
       $.get button.attr('href'),
         email: email
         password: password
+        password: password_confirmation
       , @signupResult
     @close event
     no
 
   signupResult: (data, status)=>
+    console.log(data, status)
     if data
       @app.loggedin = yes
       @app.user = data
