@@ -33,29 +33,31 @@ class window.Modals
     button = $ event.currentTarget
     email = button.siblings('.email').val()
     password = button.siblings('.password').val()
-    $.post '/login',
-      email: email
-      password: password
-    , @loginResult
+    href = button.attr('href')
+    success = (data)->
+      $(@app).trigger 'loggedin', data
+    error = (error)->
+      console.log error
+      $(@app).trigger 'loggedout'
+      alert 'login failed please try again'
+    data = 
+      remote: true
+      commit: "Sign in"
+      utf8: "✓"
+      user: 
+        remember_me: 1
+        password: password
+        email: email
+    $.post(href, data).success(success).error(error)
     @close event
     no
 
   logout: (event)=>
-    @app.user = no
-    @app.loggedin = no
-    @close event
-
-  loginResult: (data,status)=>
-    if data
-      @app.loggedin = yes 
-      @app.user = data
-      $(@app).trigger 'loggedin'
-    else
-      @app.loggedin = no
-      @app.user = no
-      alert 'login failed please try again'
+    button = $ event.currentTarget
+    $.post button.attr('href')
+    , =>
       $(@app).trigger 'loggedout'
-      @show 'login'
+      @close event
   
   signup: (event)=>
     button = $ event.currentTarget
@@ -63,7 +65,7 @@ class window.Modals
     password = button.siblings('.password').val()
     confirm_password = button.siblings('.confirm_password').val()
     if password is confirm_password
-      $.post '/signup',
+      $.get button.attr('href'),
         email: email
         password: password
       , @signupResult

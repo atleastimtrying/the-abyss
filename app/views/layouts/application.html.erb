@@ -12,7 +12,7 @@
     <nav>
       <a class='in modal-launcher' data-modal-id="login" href='#'>Login</a>
       <a class='in modal-launcher' data-modal-id="signup" href='#'>Sign Up</a>
-      <a class='out modal-launcher' data-modal-id="signout" href='#'>Sign Out</a>
+      <a class='out modal-launcher' data-modal-id="signout" href='/users/sign_out'>Sign Out</a>
       <a class='out modal-launcher' data-modal-id="edituser" href='#'>Edit User</a>
     </nav>
   </header>
@@ -28,7 +28,7 @@
     <h2>Log In</h2>
     <input class="email" size="30" type="email" placeholder="Email">
     <input class="password" size="30" type="password" placeholder="Password">
-    <a href='#' class='button'>Log In</a>
+    <a href='/users/sign_in.json' class='button'>Log In</a>
   </div>
 
   <div class='modal' id='signup'>
@@ -37,7 +37,7 @@
     <input class="email" size="30" type="email" placeholder="Email">
     <input class="password" size="30" type="password" placeholder="Password">
     <input class="confirm_password" size="30" type="password" placeholder="Confirm Password">
-    <a href='#' class='button'>Sign Up</a>
+    <a href='/users/sign_up.json' class='button'>Sign Up</a>
   </div>
 
   <div class='modal' id='signout'>
@@ -53,7 +53,7 @@
     <input class="user_email" size="30" type="email" value="">
     <label for="username">Username</label>
     <input class="username" size="30" type="text" value="">
-    <a href='#' class='button'>Save</a>
+    <a href='/users/edit' class='button'>Save</a>
   </div>
 
   <div class='modal' id='newplot'>

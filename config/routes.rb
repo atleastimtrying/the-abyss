@@ -1,13 +1,11 @@
 TheAbyss::Application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => {:sessions => 'sessions'}
 
   get "home/index"
 
   resources :users
 
   match 'plots/fetch' => 'plots#fetch'
-  match '/login' => 'home#login'
-  match '/signup' => 'home#signup'
   match '/newplot' => 'home#newplot'
   resources :plots
 

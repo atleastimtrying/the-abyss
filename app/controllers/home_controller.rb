@@ -3,19 +3,6 @@ class HomeController < ApplicationController
     @plot = Plot.first
   end
 
-  def login
-    @user = User.where(:email=>params[:email]).where(:user_name=>params[:password]).first
-    render json: @user
-  end
-  
-  def signup
-    @user = User.create!({
-      :email => params[:email], 
-      :user_name => params[:password]
-    })
-    render json: @user
-  end
-  
   def newplot
     @plot = Plot.create!({ 
       :x => params[:x], 
