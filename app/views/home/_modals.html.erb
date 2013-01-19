@@ -1,0 +1,41 @@
+<div class='modal' id='login'>
+  <a class='close' href='#'>x</a>
+  <h2>Log In</h2>
+  <input class="email" size="30" type="email" placeholder="Email">
+  <input class="password" size="30" type="password" placeholder="Password">
+  <a href='<%= new_user_session_path %>' class='button'>Log In</a>
+</div>
+
+<div class='modal' id='signup'>
+  <a class='close' href='#'>x</a>
+  <h2>Sign Up</h2>
+  <input class="email" size="30" type="email" placeholder="Email">
+  <input class="password" size="30" type="password" placeholder="Password">
+  <input class="password_confirmation" size="30" type="password" placeholder="Confirm Password">
+  <a href='<%= registration_path(:user) %>' class='button'>Sign Up</a>
+</div>
+
+<div class='modal' id='signout'>
+  <a class='close' href='#'>x</a>
+  <h2>You are now Signed Out!</h2>
+  <p>Hooray?</p>
+</div>
+
+<div class='modal' id='edituser'>
+  <a class='close' href='#'>x</a>
+  <h2>Edit <span class='username'></span></h2>
+  <label for="user_email">Email</label>
+  <input class="user_email" size="30" type="email" value="">
+  <label for="username">Username</label>
+  <input class="username" size="30" type="text" value="">
+  <a href='/users/edit' class='button'>Save</a>
+</div>
+
+<div class='modal' id='newplot'>
+  <a class='close' href='#'>x</a>
+  <h2>Write your new plot!</h2>
+  <input type='text' placeholder='title here'>
+  <textarea placeholder="Describe your plot here."></textarea>
+  <a href='#' class='button'>Save</a>
+</div>
+<div class='modal-background'></div>

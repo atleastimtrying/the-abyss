@@ -10,7 +10,7 @@ class window.App
     @navigator = new Navigator @
     @scroller = new Scroller @
     @display = new Display @
-    @modals = new Modals @
+    #@modals = new Modals @
     #@input = new Input @
 
   loggedout: =>

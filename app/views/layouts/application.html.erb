@@ -4,16 +4,24 @@
   <title>The Abyss</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tags %>
 </head>
 <body>
   <header>
-    <h1>The Abyss : A collaborative text adventure.</h1>
+    <h1><a href='/'>The Abyss : A collaborative text adventure.</a></h1>
     <nav>
-      <a class='in modal-launcher' data-modal-id="login" href='#'>Login</a>
-      <a class='in modal-launcher' data-modal-id="signup" href='#'>Sign Up</a>
-      <a class='out modal-launcher' data-modal-id="signout" href='/users/sign_out'>Sign Out</a>
-      <a class='out modal-launcher' data-modal-id="edituser" href='#'>Edit User</a>
+      <% if current_user %>
+      <span><%= current_user.user_name %></span>
+      <%= link_to "Log out", destroy_user_session_path, :method => :delete %>
+      <!-- <a class='out modal-launcher' data-modal-id="signout" href='<%= destroy_user_session_path %>'>Log Out</a> -->
+      <!-- <a class='out modal-launcher' data-modal-id="edituser" href='<%= edit_user_password_path %>'>Edit User</a> -->
+      <% else %>
+      <%= link_to "Log in", new_session_path(:user) %>
+      <%= link_to "Sign up", new_registration_path(:user) %>
+      <!-- <a class='in modal-launcher' data-modal-id="login" href='<%= new_user_session_path %>'>Login</a> -->
+      <!-- <a class='in modal-launcher' data-modal-id="signup" href='<%= registration_path(:user) %>'>Sign Up</a> -->
+      <% end %>
     </nav>
   </header>
   <article>
@@ -22,47 +30,6 @@
   <footer>
     <a href='http://andersfisher.com'>Anders Fisher</a>
   </footer>
-
-  <div class='modal' id='login'>
-    <a class='close' href='#'>x</a>
-    <h2>Log In</h2>
-    <input class="email" size="30" type="email" placeholder="Email">
-    <input class="password" size="30" type="password" placeholder="Password">
-    <a href='/users/sign_in.json' class='button'>Log In</a>
-  </div>
-
-  <div class='modal' id='signup'>
-    <a class='close' href='#'>x</a>
-    <h2>Sign Up</h2>
-    <input class="email" size="30" type="email" placeholder="Email">
-    <input class="password" size="30" type="password" placeholder="Password">
-    <input class="password_confirmation" size="30" type="password" placeholder="Confirm Password">
-    <a href='<%= registration_path(:user) %>' class='button'>Sign Up</a>
-  </div>
-
-  <div class='modal' id='signout'>
-    <a class='close' href='#'>x</a>
-    <h2>You are now Signed Out!</h2>
-    <p>Hooray?</p>
-  </div>
-
-  <div class='modal' id='edituser'>
-    <a class='close' href='#'>x</a>
-    <h2>Edit <span class='username'></span></h2>
-    <label for="user_email">Email</label>
-    <input class="user_email" size="30" type="email" value="">
-    <label for="username">Username</label>
-    <input class="username" size="30" type="text" value="">
-    <a href='/users/edit' class='button'>Save</a>
-  </div>
-
-  <div class='modal' id='newplot'>
-    <a class='close' href='#'>x</a>
-    <h2>Write your new plot!</h2>
-    <input type='text' placeholder='title here'>
-    <textarea placeholder="Describe your plot here."></textarea>
-    <a href='#' class='button'>Save</a>
-  </div>
-  <div class='modal-background'></div>
+  <% # render '/home/modals' %>
 </body>
 </html>
