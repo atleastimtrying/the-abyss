@@ -3,11 +3,11 @@ class window.Modals
     @background = $ '.modal-background'
     @background.hide()
     $('.modal').hide()
-    $('.modal-launcher').live 'click', @launch 
+    $('.modal-launcher.inline').live 'click', @launch
     $('.modal .close').click @close
-    $('#login .button').click @login
-    $('#signup .button').click @signup
-    $('#edituser .button').click @edituser
+    # $('#login .button').click @login
+    # $('#signup .button').click @signup
+    # $('#edituser .button').click @edituser
     $('#newplot .button').click @newplot
 
   launch: (event)=>
@@ -74,7 +74,6 @@ class window.Modals
     no
 
   signupResult: (data, status)=>
-    console.log(data, status)
     if data
       @app.loggedin = yes
       @app.user = data
@@ -87,31 +86,24 @@ class window.Modals
 
   edituser: (event)=>
     button = $ event.currentTarget
-
     no
   
   newplot: (event)=>
-    if @app.user
+    if $('.hidden.id').length isnt 0
       button = $ event.currentTarget
       x = @app.navigator.plot.x
       y = @app.navigator.plot.y
-      user_id = @app.user.id
       title = button.siblings('.title').val()
       description = button.siblings('.description').val()
-      $.post '/newplot',
+      $.post '/plots.json',
         x : x 
         y : y
-        user_id : user_id
         title : title
         description : description
-      , @newplotResult
+      , (data, error)=>
+        console.log data if error is 'success'
+        $(@app).trigger 'requestPlot', 'nowhere'
     else
       alert 'please log in'
     @close event
     no
-
-  newplotResult: (data, error)=>
-    console.log data
-    console.log error if error
-    alert 'plot made!'
-

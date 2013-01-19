@@ -1,13 +1,14 @@
 <% # render '/users/login' %>
 <div data-id="<%= @plot.id %>" data-x="<%= @plot.x %>" data-y="<%= @plot.y %>" class='actions'>
   <h2><%= @plot.title %></h2>
+  <h3>x:<span id='x'><%= @plot.x %></span> y:<span id='y'><%= @plot.y %></span></h3>
   <section>
     <p><%= @plot.description %></p>
   </section>
 </div>
 <nav>
-  <a href='/north' class="north">North</a>
-  <a href='/south' class="south">South</a>
-  <a href='/east' class="east">East</a>
-  <a href='/west' class="west">West</a>
+  <a href='/north' class="north">North: <%= @north_title %></a>
+  <a href='/south' class="south">South: <%= @south_title %></a>
+  <a href='/east' class="east">East: <%= @east_title %></a>
+  <a href='/west' class="west">West: <%= @west_title %></a>
 </nav>

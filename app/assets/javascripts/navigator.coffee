@@ -1,5 +1,6 @@
 class window.Navigator
   constructor: (@app)->
+    $(@app).bind 'requestPlot', @requestPlot
     @plot =
       id: $('div').data('id')
       x: $('div').data('x')
@@ -9,14 +10,14 @@ class window.Navigator
     $('article nav a').click @navClick
 
   navClick: (event)=>
-    element = $ event.currentTarget
-    @requestPlot element.attr('href').substring 1
+    action = $(event.currentTarget).attr('href').substring 1
+    $(@app).trigger 'requestPlot', action
     false
 
-  requestPlot: (action)=>
+  requestPlot: (event, action)=>
     $(@app).trigger 'travel', action
-    x = @plot.x
-    y = @plot.y
+    x = parseInt @plot.x
+    y = parseInt @plot.y
     y += 1 if action is 'north'
     y -= 1 if action is 'south'
     x += 1 if action is 'east'
@@ -32,7 +33,6 @@ class window.Navigator
       @plot = plot
       $(@app).trigger 'showPlot', plot
     else
-      $(@app).trigger 'emptyPlot'
-    
+      alert 'no plot?'
     $(@app).trigger 'scrollDown'
     $(@app).trigger 'updateNav', plots

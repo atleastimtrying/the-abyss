@@ -4,7 +4,6 @@
   <title>The Abyss</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -13,14 +12,11 @@
     <nav>
       <% if current_user %>
       <span><%= current_user.user_name %></span>
+      <span class='hidden id'><%= current_user.id %></span>
       <%= link_to "Log out", destroy_user_session_path, :method => :delete %>
-      <!-- <a class='out modal-launcher' data-modal-id="signout" href='<%= destroy_user_session_path %>'>Log Out</a> -->
-      <!-- <a class='out modal-launcher' data-modal-id="edituser" href='<%= edit_user_password_path %>'>Edit User</a> -->
       <% else %>
       <%= link_to "Log in", new_session_path(:user) %>
       <%= link_to "Sign up", new_registration_path(:user) %>
-      <!-- <a class='in modal-launcher' data-modal-id="login" href='<%= new_user_session_path %>'>Login</a> -->
-      <!-- <a class='in modal-launcher' data-modal-id="signup" href='<%= registration_path(:user) %>'>Sign Up</a> -->
       <% end %>
     </nav>
   </header>
@@ -30,6 +26,6 @@
   <footer>
     <a href='http://andersfisher.com'>Anders Fisher</a>
   </footer>
-  <% # render '/home/modals' %>
+  <%= render '/home/modals' %>
 </body>
 </html>

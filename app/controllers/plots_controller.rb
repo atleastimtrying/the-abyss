@@ -3,7 +3,7 @@ class PlotsController < ApplicationController
   # GET /plots.json
   def index
     @plots = Plot.all
-
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @plots }
@@ -32,13 +32,10 @@ class PlotsController < ApplicationController
     end
   end
 
-  def getPlot (x, y)
-    Plot.where(:x => x).where(:y => y).first
-  end
   # GET /plots/fetch
   def fetch
-    x = params[:x]
-    y = params[:y]
+    x = params[:x].to_i
+    y = params[:y].to_i
     plot = getPlot x, y
     north = getPlot x, (y.to_i + 1)
     south = getPlot x, (y.to_i - 1)
@@ -65,16 +62,18 @@ class PlotsController < ApplicationController
   # POST /plots
   # POST /plots.json
   def create
-    @plot = Plot.new(params[:plot])
-
-    respond_to do |format|
-      if @plot.save
-        format.html { redirect_to @plot, notice: 'Plot was successfully created.' }
-        format.json { render json: @plot, status: :created, location: @plot }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @plot.errors, status: :unprocessable_entity }
-      end
+    if current_user
+      current_user.plots.build({ 
+        :x => params[:x], 
+        :y => params[:y],
+        :title => params[:title],
+        :description => params[:description]
+      })
+      render json: @plot
+    else
+      render json: {
+        :error => 'not logged in!'
+      }
     end
   end
 

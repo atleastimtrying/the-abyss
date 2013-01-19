@@ -11,9 +11,11 @@ class window.Display
     $('div h2').html title
 
   setData: (id, x, y)->
-    $('div').data 'id', id
+    $('div').data 'id', id if id
     $('div').data 'x', x
     $('div').data 'y', y
+    $('#x').html(x)
+    $('#y').html(y)
 
   updateNav: (event, plots)=>
     @updateDirectionLabel 'north', plots['north']
@@ -45,7 +47,3 @@ class window.Display
   loggedout: (event)=>
     $('.in').hide()
     $('.out').show()
-
-  emptyPlot: =>
-    @setTitle 'The Abyss'
-    @append "<p>You have reached the edge of the abyss nothing is here.</p><p class='author'>To change this you can <a href='#' class='modal-launcher' data-modal-id='newplot'>write it</a></p>"

@@ -1,16 +1,9 @@
 class HomeController < ApplicationController
   def index
-    @plot = Plot.first
-  end
-
-  def newplot
-    @plot = Plot.create!({ 
-      :x => params[:x], 
-      :y => params[:y],
-      :user_id => params[:user_id],
-      :title => params[:title],
-      :description => params[:description]
-    })
-    render json: @plot
+    @plot = getPlot 0, 0
+    @north_title = getPlot(0, 1)[:title]
+    @south_title = getPlot(0, -1)[:title]
+    @east_title = getPlot(-1, 0)[:title]
+    @west_title = getPlot(1, 0)[:title]
   end
 end
