@@ -48,7 +48,7 @@ class window.Modals
         remember_me: 1
         password: password
         email: email
-    $.post(href, data).success(success).error(error)
+    $.get(href, data).success(success).error(error)
     @close event
     no
 
@@ -63,12 +63,12 @@ class window.Modals
     button = $ event.currentTarget
     email = button.siblings('.email').val()
     password = button.siblings('.password').val()
-    confirm_password = button.siblings('.confirm_password').val()
+    password_confirmation = button.siblings('.password_confirmation').val()
     if password is confirm_password
-      $.get button.attr('href'),
+      $.post button.attr('href'),
         email: email
         password: password
-        password: password_confirmation
+        password_confirmation: password_confirmation
       , @signupResult
     @close event
     no
@@ -78,7 +78,7 @@ class window.Modals
     if data
       @app.loggedin = yes
       @app.user = data
-      $(@app).trigger 'loggedin'
+      $(@app).trigger 'loggedin', data
     else
       @app.loggedin = no
       @app.user = no
