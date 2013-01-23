@@ -63,13 +63,14 @@ class PlotsController < ApplicationController
   # POST /plots.json
   def create
     if current_user
-      current_user.plots.build({ 
+      p = current_user.plots.build({ 
         :x => params[:x], 
         :y => params[:y],
         :title => params[:title],
         :description => params[:description]
       })
-      render json: @plot
+      p.save
+      render json: p
     else
       render json: {
         :error => 'not logged in!'

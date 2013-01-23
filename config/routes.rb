@@ -7,6 +7,7 @@ TheAbyss::Application.routes.draw do
 
   match 'plots/fetch' => 'plots#fetch'
   match '/newplot' => 'home#newplot'
+  match '/grid' => 'home#grid'
   resources :plots
 
   # The priority is based upon order of creation:

@@ -1,0 +1,8 @@
+<h1>All the Plots</h1>
+<div id='grid'>
+<% @plots.each do |plot|  %>
+  <section data-x='<%= plot.x %>' data-y='<%= plot.y %>' >
+    <p><%= plot.title %></p>
+  </section>
+<% end %>
+</div>

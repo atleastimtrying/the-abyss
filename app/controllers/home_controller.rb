@@ -6,4 +6,7 @@ class HomeController < ApplicationController
     @east_title = getPlot(-1, 0)[:title]
     @west_title = getPlot(1, 0)[:title]
   end
+  def grid
+    @plots = Plot.all
+  end
 end

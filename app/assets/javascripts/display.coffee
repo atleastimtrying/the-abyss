@@ -4,8 +4,6 @@ class window.Display
     $(@app).bind 'showPlot', @showPlot
     $(@app).bind 'travel', @travel
     $(@app).bind 'updateNav', @updateNav
-    $(@app).bind 'loggedin', @loggedin
-    $(@app).bind 'loggedout', @loggedout
 
   setTitle: (title)->
     $('div h2').html title
@@ -39,11 +37,3 @@ class window.Display
     @setData plot.id, plot.x, plot.y
     @setTitle plot.title
     @append "<p>#{plot.description}</p>"
-
-  loggedin: (event)=>
-    $('.in').show()
-    $('.out').hide()
-
-  loggedout: (event)=>
-    $('.in').hide()
-    $('.out').show()

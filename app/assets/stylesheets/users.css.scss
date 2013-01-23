@@ -1,27 +1,69 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#error_explanation{
+  background-color:rgb(190, 76, 76);
+  padding:8px;
+  border-radius:4px;
+  margin-bottom:8px;
+  box-shadow: inset 0 0 4px;
+  h2{
+    color:white;
+    text-shadow:1px 1px 1px rgba(0,0,0,0.3);
+    margin-bottom:8px;
+  }
+  ul{
+    li{
+      list-style:none;
+      color:white;
+      text-shadow:1px 1px 1px rgba(0,0,0,0.3);
+      padding:4px;
+      margin-bottom:4px;
+      margin-left:8px;
+      border-bottom:1px solid white;
+      &:last-child{
+        border-bottom:none;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
 #new_user{
   label{
     display:block;
     margin-bottom:8px;
+    font-size:24px;
     &[for=user_remember_me]{
       display:inline-block;
     }
   }
   input{
     display:block;
+    box-sizing:border-box;
+    width:50%;
     background-color:#efefef;
     box-shadow: inset 0 0 8px;
     border: none;
     padding:8px;
     border-radius:4px;
     margin-bottom:8px;
-    &[type=submit]:hover{
-      background-color:grey;
+    font-size:16px;
+    &[type=submit]{
+      background-color:rgb(117, 197, 117);
+      box-shadow: inset 0 1px 8px rgba(255,255,255,0.5);
+      -webkit-transition:background-color 0.25s ease-out;
+      -moz-transition:background-color 0.25s ease-out;
+      transition:background-color 0.25s ease-out;
+      color:white;
+      text-shadow: 1px 1px 1px rgba(0,0,0,0.4);
+      &:hover{
+        background-color:rgb(78, 139, 78);
+      }
     }
     &[type=checkbox]{
       display:inline-block;
+      width:auto;
     }
   }
 }

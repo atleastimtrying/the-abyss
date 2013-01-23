@@ -6,7 +6,7 @@ class CreatePlots < ActiveRecord::Migration
       t.text :description
       t.integer :x
       t.integer :y
-
+      t.integer :user_id
       t.timestamps
     end
   end
