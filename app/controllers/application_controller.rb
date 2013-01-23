@@ -1,5 +1,15 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  before_filter :dev_authenticate
+  
+  def dev_authenticate
+    if ["staging", "production"].include?(Rails.env)
+      authenticate_or_request_with_http_basic do |username, password|
+        username == "matt" && password == "hands"
+      end
+    end
+  end
+
   def getPlot (x, y)
     plot = Plot.where(:x => x).where(:y => y).first
     unless plot
