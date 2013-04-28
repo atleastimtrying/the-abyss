@@ -3,12 +3,21 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #grid{
+  height:500px;
+  width:500px;
+  position:relative;
+  background:#ccc;
   section{
-    display:inline-block;
-    height:auto;
-    overflow:auto;
+    display:block;
+    position: absolute;
+    background:white;
+    width:10px;
+    height:10px;
+    top:50%;
+    left:50%;
+    box-sizing:border-box;
     p{
-      display:inline-block;
+      display:none;
     }
   }
 }

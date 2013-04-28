@@ -1,7 +1,7 @@
 <h1>All the Plots</h1>
 <div id='grid'>
 <% @plots.each do |plot|  %>
-  <section data-x='<%= plot.x %>' data-y='<%= plot.y %>' >
+  <section style='margin-top: <%= plot.x * 10 %>px; margin-left: <%= plot.y * 10 %>px;' >
     <p><%= plot.title %></p>
   </section>
 <% end %>

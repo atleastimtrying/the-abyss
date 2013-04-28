@@ -5,9 +5,6 @@ class window.Modals
     $('.modal').hide()
     $('.modal-launcher.inline').live 'click', @launch
     $('.modal .close').click @close
-    # $('#login .button').click @login
-    # $('#signup .button').click @signup
-    # $('#edituser .button').click @edituser
     $('#newplot .button').click @newplot
 
   launch: (event)=>

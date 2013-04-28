@@ -1,7 +1,9 @@
+<article>
 <% # render '/users/login' %>
 <div data-id="<%= @plot.id %>" data-x="<%= @plot.x %>" data-y="<%= @plot.y %>" class='actions'>
   <h2><%= @plot.title %></h2>
-  <h3>x:<span id='x'><%= @plot.x %></span> y:<span id='y'><%= @plot.y %></span></h3>
+  <button id='mapToggle' class='hidden'>show map</button>
+  <canvas id='map' class='hidden'></canvas>
   <section>
     <p><%= @plot.description %></p>
   </section>
@@ -12,3 +14,4 @@
   <a href='/east' class="east">East: <%= @east_title %></a>
   <a href='/west' class="west">West: <%= @west_title %></a>
 </nav>
+</article>

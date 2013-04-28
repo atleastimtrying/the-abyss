@@ -12,8 +12,7 @@ class window.Display
     $('div').data 'id', id if id
     $('div').data 'x', x
     $('div').data 'y', y
-    $('#x').html(x)
-    $('#y').html(y)
+    $(@app).trigger 'mapUpdate', x, y
 
   updateNav: (event, plots)=>
     @updateDirectionLabel 'north', plots['north']
@@ -27,13 +26,15 @@ class window.Display
     $(".#{label}").html "#{label}: #{message}"
 
   append: (string)->
-    $('div section').append string
+    element = $ string
+    $('div section').append(element)
+    element.slideDown(1000)
 
   travel: (event, action)=>
-    @append "<p class='action'>You travelled #{action}.</p>"
+    @append "<p class='action'>You travelled <span class='direction'>#{action}</span>.</p>"
     $('section p.author').remove()
 
   showPlot: (event, plot)=>
     @setData plot.id, plot.x, plot.y
     @setTitle plot.title
-    @append "<p>#{plot.description}</p>"
+    @append "<p style='display:none;'>#{plot.description}</p>"
