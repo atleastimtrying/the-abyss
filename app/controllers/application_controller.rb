@@ -13,8 +13,8 @@ class ApplicationController < ActionController::Base
   def getPlot (x, y)
     plot = Plot.where(:x => x).where(:y => y).first
     unless plot
-      description = "You have reached the edge of the abyss nothing is here."
-      description = description + "<p class='author'>To change this you can <a href='#' class='modal-launcher inline' data-modal-id='newplot'>write it</a></p>" if current_user
+      description = "You have reached the edge of the abyss nothing is here.<br>"
+      description = description + "To change this you can write it, just enter write as a command then fill out the popup."
       plot = {
         x: x,
         y: y,

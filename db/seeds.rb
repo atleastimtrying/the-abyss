@@ -38,3 +38,11 @@ Plot.create! [{
   x: 1,
   y: 0
 }]
+
+Plot.create! [{
+  title: "The Clearing",
+  state: "published",
+  description: "The trees thin out and give way to a clearing. A hut stands here dwarfed by the old trunks around it. A rudimentary fence has been built around the hut, and within its bounds you can see the remains of a fire. A smell of embers reaches you on the breeze. <br><br>A large tractor is parked behind the hut with a plough attached to the back. On the driver's seat there is a scrap of fox fur, which on closer inspection turns out to be a home-made hat.<br><br>Squinting through the iron talons of the plough you can make out a distant figure among the trees, but when you try to move towards it, it vanishes.<br>",
+  x: 1,
+  y: 0
+}]

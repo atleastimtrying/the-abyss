@@ -1,23 +1,57 @@
 // Place all the styles related to the Plots controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+#grid-container{
+  height:700px;
+  border:2px solid #ccc;
+  border-radius:2px;
+  overflow:scroll;
+}
 #grid{
-  height:500px;
-  width:500px;
+  height:4000px;
+  width:4000px;
   position:relative;
   background:#ccc;
   section{
     display:block;
     position: absolute;
     background:white;
-    width:10px;
-    height:10px;
+    width:80px;
+    height:80px;
+    padding:8px;
     top:50%;
     left:50%;
     box-sizing:border-box;
     p{
-      display:none;
+      font-size:12px;
+      margin-bottom:4px;
     }
+  }
+}
+.users{
+  background:rgba(0,0,0,0.1);
+  font-size:0;
+  padding:4px;
+  border-radius:12px;
+  a.user{
+    width:8px;
+    height:8px;
+    background:hsla(130, 60%, 40%, 0.8);
+    position:relative;
+    display:inline-block;
+    vertical-align: top;
+    margin-right:4px;
+    border-radius:50%;
+  }
+  a.user:last-child{
+    margin-right:0;
+  }
+  a.user:hover:after{
+    content: attr(title);
+    font-size:8px;
+    position:absolute;
+    top:12px;
+    left:-8px;
+    color:#333;
   }
 }

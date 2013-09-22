@@ -8,5 +8,6 @@ class HomeController < ApplicationController
   end
   def grid
     @plots = Plot.all
+    @users = User.all
   end
 end

@@ -39,16 +39,16 @@ class PlotsController < ApplicationController
     plot = getPlot x, y
     north = getPlot x, (y.to_i + 1)
     south = getPlot x, (y.to_i - 1)
-    east = getPlot (x.to_i - 1), y
-    west = getPlot (x.to_i + 1), y
+    east = getPlot (x.to_i + 1), y
+    west = getPlot (x.to_i - 1), y
     respond_to do |format|
       format.json { 
         render json: {
-          :plot => plot, 
-          :north => north, 
-          :south => south, 
-          :east => east, 
-          :west => west
+          plot: plot, 
+          north: north, 
+          south: south, 
+          east: east, 
+          west: west
         } 
       }
     end
@@ -62,20 +62,14 @@ class PlotsController < ApplicationController
   # POST /plots
   # POST /plots.json
   def create
-    if current_user
-      p = current_user.plots.build({ 
-        :x => params[:x], 
-        :y => params[:y],
-        :title => params[:title],
-        :description => params[:description]
-      })
-      p.save
-      render json: p
-    else
-      render json: {
-        :error => 'not logged in!'
-      }
-    end
+    p = current_user.plots.build({ 
+      :x => params[:x], 
+      :y => params[:y],
+      :title => params[:title],
+      :description => params[:description]
+    })
+    p.save
+    render json: p
   end
 
   # PUT /plots/1

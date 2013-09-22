@@ -1,8 +1,24 @@
+<article>
 <h1>All the Plots</h1>
-<div id='grid'>
-<% @plots.each do |plot|  %>
-  <section style='margin-top: <%= plot.x * 10 %>px; margin-left: <%= plot.y * 10 %>px;' >
-    <p><%= plot.title %></p>
-  </section>
-<% end %>
+<div id="grid-container">
+  <div id='grid'>
+  <% @plots.each do |plot|  %>
+    <section class="plot" data-x="<%= plot.x %>" data-y="<%= plot.y %>" style='margin-top: <%= plot.y * 100 * -1 %>px; margin-left: <%= plot.x * 100 * -1 %>px;' >
+      <p><%= plot.title %></p>
+      <div class="users"></div>
+    </section>
+  <% end %>
+  <script>
+    $(function(){
+      var gc = $('#grid-container');
+      var g = $('#grid');
+      gc.scrollTop(g.height()/2 - gc.height()/2);
+      gc.scrollLeft(g.width()/2 - gc.width()/2);
+    <% @users.each do |user| %>
+      $('.plot[data-x=<%= user.x %>][data-y=<%= user.y %>] .users').append('<a href="<%= user_path(user) %>" class="user" title="<%= user.user_name %>" style="background-color:<%= user.colour %>;"></a>');
+    <% end %>
+    });
+  </script>
+  </div>
 </div>
+</article>

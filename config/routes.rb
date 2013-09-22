@@ -2,7 +2,7 @@ TheAbyss::Application.routes.draw do
   devise_for :users
 
   get "home/index"
-
+  match '/users/:id/move' => 'users#move'
   resources :users
 
   match 'plots/fetch' => 'plots#fetch'

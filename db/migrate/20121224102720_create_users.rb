@@ -5,6 +5,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :state
       t.integer :x
       t.integer :y
+      t.string :colour
 
       t.timestamps
     end

@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20130110132329) do
     t.string   "state"
     t.integer  "x"
     t.integer  "y"
+    t.string   "colour"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "email",                  :default => "", :null => false

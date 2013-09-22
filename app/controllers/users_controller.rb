@@ -69,6 +69,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def move
+    @user = User.find(params[:id])
+    @user.x = params[:x]
+    @user.y = params[:y]
+    @user.save
+    respond_to do |format|
+      format.json { render json: @user}
+    end
+  end
+
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy

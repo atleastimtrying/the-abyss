@@ -1,17 +1,11 @@
 <article>
-<% # render '/users/login' %>
-<div data-id="<%= @plot.id %>" data-x="<%= @plot.x %>" data-y="<%= @plot.y %>" class='actions'>
-  <h2><%= @plot.title %></h2>
-  <button id='mapToggle' class='hidden'>show map</button>
-  <canvas id='map' class='hidden'></canvas>
-  <section>
-    <p><%= @plot.description %></p>
-  </section>
-</div>
-<nav>
-  <a href='/north' class="north">North: <%= @north_title %></a>
-  <a href='/south' class="south">South: <%= @south_title %></a>
-  <a href='/east' class="east">East: <%= @east_title %></a>
-  <a href='/west' class="west">West: <%= @west_title %></a>
-</nav>
 </article>
+<input id="input" type="text">
+<div class="modal" id="writeModal">
+  <a href="#" class="close">x</a>
+  <input type="text" id="plotTitle" value="Title here">
+  <div contenteditable id="plotContent">
+    Describe your scene here
+  </div>
+  <button id="submit">submit</button>
+</div>
