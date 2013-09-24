@@ -62,13 +62,12 @@ class PlotsController < ApplicationController
   # POST /plots
   # POST /plots.json
   def create
-    p = current_user.plots.build({ 
+    p = Plot.create({ 
       :x => params[:x], 
       :y => params[:y],
       :title => params[:title],
       :description => params[:description]
     })
-    p.save
     render json: p
   end
 

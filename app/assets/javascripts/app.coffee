@@ -98,8 +98,11 @@ processNewPlot = ->
     x: user.x
     y: user.y
   $.post '/plots.json', info, (data)->
-    console.log data
-
+    if data.title
+      $('#plotTitle, #plotContent').val('')
+      $('#writeModal').hide()
+      print "You look up from your writings to see that the things you have written have come into being, well done."
+      commands['look']()
 printPlot = (plot)->
   print '<h2>' + plot.plot.title + '</h2>'
   print plot.plot.description
@@ -113,15 +116,21 @@ readInput = (event)->
     input.val('')
 
 $ ->
-  $('#input').focus()
-  $('#input').on('keyup', readInput)
-  $('#writeModal .close').on 'click', ->
-    $('#writeModal').hide()
-    print "You closed the create plot window."
-  $('#writeModal #submit').on 'click', processNewPlot
-  print('<h1>Welcome to the abyss, a text adventure game type &ldquo;help&rdquo; for a list of commands.</h1>');
-  
-  if window.localStorage
-    storage.establishUser()
+  if $('#grid-container')[0]
+    gc = $('#grid-container')
+    g = $('#grid')
+    gc.scrollTop(g.height()/2 - gc.height()/2)
+    gc.scrollLeft(g.width()/2 - gc.width()/2)
   else
-    print 'you will need a modern browser with local storage to persist your game, we reccommend google chrome.'
+    $('#input').focus()
+    $('#input').on('keyup', readInput)
+    $('#writeModal .close').on 'click', ->
+      $('#plotTitle, #plotContent').val('')
+      $('#writeModal').hide()
+      print "You closed the create plot window."
+    $('#writeModal #submit').on 'click', processNewPlot
+    print('<h1>Welcome to the abyss, a text adventure game type &ldquo;help&rdquo; for a list of commands.</h1>');
+    if window.localStorage
+      storage.establishUser()
+    else
+      print 'you will need a modern browser with local storage to persist your game, we reccommend google chrome.'

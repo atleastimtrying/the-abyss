@@ -8,17 +8,6 @@
       <div class="users"></div>
     </section>
   <% end %>
-  <script>
-    $(function(){
-      var gc = $('#grid-container');
-      var g = $('#grid');
-      gc.scrollTop(g.height()/2 - gc.height()/2);
-      gc.scrollLeft(g.width()/2 - gc.width()/2);
-    <% @users.each do |user| %>
-      $('.plot[data-x=<%= user.x %>][data-y=<%= user.y %>] .users').append('<a href="<%= user_path(user) %>" class="user" title="<%= user.user_name %>" style="background-color:<%= user.colour %>;"></a>');
-    <% end %>
-    });
-  </script>
   </div>
 </div>
 </article>

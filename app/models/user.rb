@@ -13,5 +13,4 @@ class User < ActiveRecord::Base
   validates :x, :length => { :maximum => 140 }
   validates :y, :length => { :maximum => 140 }
   validates :colour, :length => { :maximum => 140 }
-  has_many :plots
 end
