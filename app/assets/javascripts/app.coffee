@@ -53,7 +53,8 @@ commands =
   'e': east
   'west': west
   'w': west
-  
+  'grid': ->
+    window.location = '/grid'
   'home': ->
     print 'With a twist in reality you are transported back'
     storage.updateUser 0, 0

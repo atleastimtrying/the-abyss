@@ -1,9 +1,9 @@
-<article>
-<h1>All the Plots</h1>
+<article class="grid">
+<h1><%= link_to 'The Abyss', '/' %></h1>
 <div id="grid-container">
   <div id='grid'>
   <% @plots.each do |plot|  %>
-    <section class="plot" data-x="<%= plot.x %>" data-y="<%= plot.y %>" style='margin-top: <%= plot.y * 100 * -1 %>px; margin-left: <%= plot.x * 100 * -1 %>px;' >
+    <section class="plot" data-x="<%= plot.x %>" data-y="<%= plot.y %>" style='margin-top: <%= plot.y * 100 * -1 %>px; margin-left: <%= plot.x * 100 %>px;' >
       <p><%= plot.title %></p>
       <div class="users"></div>
     </section>

@@ -1,10 +1,13 @@
 // Place all the styles related to the Plots controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+article.grid{
+  padding:0;
+  margin-bottom: -39px;
+}
 #grid-container{
   height:700px;
-  border:2px solid #ccc;
-  border-radius:2px;
   overflow:scroll;
 }
 #grid{
@@ -30,30 +33,43 @@
     }
   }
 }
-.users{
-  background:rgba(0,0,0,0.1);
-  font-size:0;
-  padding:4px;
-  border-radius:12px;
-  a.user{
-    width:8px;
-    height:8px;
-    background:hsla(130, 60%, 40%, 0.8);
-    position:relative;
-    display:inline-block;
-    vertical-align: top;
-    margin-right:4px;
-    border-radius:50%;
+@media all and (max-height: 700px){
+  #grid-container{
+    height:650px;
   }
-  a.user:last-child{
-    margin-right:0;
+}
+@media all and (max-height: 650px){
+  #grid-container{
+    height:600px;
   }
-  a.user:hover:after{
-    content: attr(title);
-    font-size:8px;
-    position:absolute;
-    top:12px;
-    left:-8px;
-    color:#333;
+}
+@media all and (max-height: 600px){
+  #grid-container{
+    height:550px;
+  }
+}
+@media all and (max-height: 550px){
+  #grid-container{
+    height:500px;
+  }
+}
+@media all and (max-height: 500px){
+  #grid-container{
+    height:450px;
+  }
+}
+@media all and (max-height: 450px){
+  #grid-container{
+    height:400px;
+  }
+}
+@media all and (max-height: 400px){
+  #grid-container{
+    height:350px;
+  }
+}
+@media all and (max-height: 350px){
+  #grid-container{
+    height:300px;
   }
 }
