@@ -21,48 +21,48 @@ storage =
   updateUser: (x,y)->
     localStorage.setItem 'abyssUser', JSON.stringify { x: x, y: y }
 
+move = (label, xmod, ymod)->
+  print "you travel #{label}"
+  user = storage.getUser()
+  x = user.x + xmod
+  y = user.y + ymod
+  storage.updateUser(x,y)
+  location.get x, y, printPlot
+north = ->  move('north', 0, 1)
+south = -> move('south', 0, -1)
+east = -> move('east', 1, 0)
+west = -> move('west', -1, 0)
 commands =
   'help': ->
     print 'The abyss is played by entering text commands in the window below here are some of the commands available'
-    print 'help : will bring up this screen to remind you of your options'
-    print 'look : will show you the description of where you are'
-    print 'north : will take you one area north'
-    print 'south : will take you one area south'
-    print 'east : will take you one area east'
-    print 'west : will take you one area west'
+    print '<span class="highlight">help</span> : will bring up this screen to remind you of your options'
+    print '<span class="highlight">look</span> : will show you the description of where you are'
+    print '<span class="highlight">north</span> : will take you one area north'
+    print '<span class="highlight">south</span> : will take you one area south'
+    print '<span class="highlight">east</span> : will take you one area east'
+    print '<span class="highlight">west</span> : will take you one area west'
+    print '<span class="highlight">write</span> : will allow you to overwrite the abyss with your own plot'
+    print '<span class="highlight">home</span> : will take you back to the entrance'
+    print '<span class="highlight">where</span> : will tell you your current coordinates'
   
-  'north': -> 
-    print 'you travel north'
+  'north': north
+  'n': north
+  'south': south
+  's': south
+  'east': east
+  'e': east
+  'west': west
+  'w': west
+  
+  'home': ->
+    print 'With a twist in reality you are transported back'
+    storage.updateUser 0, 0
+    location.get 0, 0, printPlot
+  
+  'where': ->
     user = storage.getUser()
-    y = user.y
-    y += 1
-    storage.updateUser(user.x, y)
-    location.get user.x, y, printPlot
+    print "By looking at the stars, some moss and the curve of the horizon you determine that your coordinates must be <br> <span class='highlight'>#{user.x}, #{user.y}</span>!"
 
-  'south': ->
-    print 'you travel south'
-    user = storage.getUser()
-    y = user.y
-    y -= 1
-    storage.updateUser(user.x, y)
-    location.get user.x, y, printPlot
-  
-  'east': ->
-    print 'you travel east'
-    user = storage.getUser()
-    x = user.x
-    x += 1
-    storage.updateUser(x, user.y)
-    location.get x, user.y, printPlot
-  
-  'west': ->
-    print 'you travel west'
-    user = storage.getUser()
-    x = user.x
-    x -= 1
-    storage.updateUser(x, user.y)
-    location.get x, user.y, printPlot
-  
   'look': ->
     print 'you look around you'
     user = storage.getUser()
@@ -72,7 +72,9 @@ commands =
     user = storage.getUser()
     location.get user.x, user.y, (data)->
       if data.plot.title is "The Abyss"
-        $('#writeModal').show()
+        $('#writeModal').slideDown ->
+          $('#input').hide()
+          $('#plotTitle').focus()
       else
         print "you can&rsquo;t overwrite this plot, sorry!"
 
@@ -99,14 +101,14 @@ processNewPlot = ->
     y: user.y
   $.post '/plots.json', info, (data)->
     if data.title
-      $('#plotTitle, #plotContent').val('')
-      $('#writeModal').hide()
+      closeModal()
       print "You look up from your writings to see that the things you have written have come into being, well done."
       commands['look']()
+
 printPlot = (plot)->
   print '<h2>' + plot.plot.title + '</h2>'
   print plot.plot.description
-  print "To the north lies #{plot.north.title}, south lies #{plot.south.title}, east lies #{plot.east.title} and to the west lies #{plot.west.title}"
+  print "To the <span class=\"highlight\">north</span> lies #{plot.north.title}, <span class=\"highlight\">south</span> lies #{plot.south.title}, <span class=\"highlight\">east</span> lies #{plot.east.title} and to the <span class=\"highlight\">west</span> lies #{plot.west.title}"
 
 readInput = (event)->
   input = $ @
@@ -115,21 +117,23 @@ readInput = (event)->
     interpret input.val()
     input.val('')
 
+closeModal = ->
+  $('#plotTitle, #plotContent').val('')
+  $('#writeModal').slideUp ->
+    $('#input').show().focus()
+
 $ ->
   if $('#grid-container')[0]
     gc = $('#grid-container')
     g = $('#grid')
     gc.scrollTop(g.height()/2 - gc.height()/2)
     gc.scrollLeft(g.width()/2 - gc.width()/2)
-  else
+  if $('#input')[0]
     $('#input').focus()
     $('#input').on('keyup', readInput)
-    $('#writeModal .close').on 'click', ->
-      $('#plotTitle, #plotContent').val('')
-      $('#writeModal').hide()
-      print "You closed the create plot window."
+    $('#writeModal .close').on 'click', closeModal
     $('#writeModal #submit').on 'click', processNewPlot
-    print('<h1>Welcome to the abyss, a text adventure game type &ldquo;help&rdquo; for a list of commands.</h1>');
+    print('<h1>Welcome to the abyss, a text adventure game type <span class=\"highlight\">help</span> for a list of commands.</h1>');
     if window.localStorage
       storage.establishUser()
     else

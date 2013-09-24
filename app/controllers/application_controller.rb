@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     plot = Plot.where(:x => x).where(:y => y).first
     unless plot
       description = "You have reached the edge of the abyss nothing is here.<br>"
-      description = description + "To change this you can write it, just enter write as a command then fill out the popup."
+      description = description + "To change this you can <span class=\"highlight\">write</span> it, just enter <span class=\"highlight\">write</span> as a command then fill out the popup."
       plot = {
         x: x,
         y: y,
