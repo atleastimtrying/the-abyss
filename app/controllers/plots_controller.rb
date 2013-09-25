@@ -13,7 +13,7 @@ class PlotsController < ApplicationController
   # GET /plots/1
   # GET /plots/1.json
   def show
-    @plot = Plot.find(params[:id])
+    @plot = Plot.find(plots_params)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -56,25 +56,20 @@ class PlotsController < ApplicationController
 
   # GET /plots/1/edit
   def edit
-    @plot = Plot.find(params[:id])
+    @plot = Plot.find(plots_params)
   end
 
   # POST /plots
   # POST /plots.json
   def create
-    p = Plot.create({ 
-      :x => params[:x], 
-      :y => params[:y],
-      :title => params[:title],
-      :description => params[:description]
-    })
+    p = Plot.create(plots_params)
     render json: p
   end
 
   # PUT /plots/1
   # PUT /plots/1.json
   def update
-    @plot = Plot.find(params[:id])
+    @plot = Plot.find(plots_params)
 
     respond_to do |format|
       if @plot.update_attributes(params[:plot])
@@ -97,5 +92,9 @@ class PlotsController < ApplicationController
       format.html { redirect_to plots_url }
       format.json { head :no_content }
     end
+  end
+  private
+  def plots_params
+    params.permit(:x, :y, :title, :description)
   end
 end

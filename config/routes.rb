@@ -1,13 +1,8 @@
 TheAbyss::Application.routes.draw do
-  devise_for :users
-
   get "home/index"
-  match '/users/:id/move' => 'users#move'
-  resources :users
-
-  match 'plots/fetch' => 'plots#fetch'
-  match '/newplot' => 'home#newplot'
-  match '/grid' => 'home#grid'
+  get 'plots/fetch' => 'plots#fetch'
+  post '/newplot' => 'home#newplot'
+  get '/grid' => 'home#grid'
   resources :plots
 
   # The priority is based upon order of creation:
