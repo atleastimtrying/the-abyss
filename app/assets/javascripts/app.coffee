@@ -44,6 +44,7 @@ commands =
     print '<span class="highlight">write</span> : will allow you to overwrite the abyss with your own plot'
     print '<span class="highlight">home</span> : will take you back to the entrance'
     print '<span class="highlight">where</span> : will tell you your current coordinates'
+    print '<span class="highlight">grid</span> : will relocate you to the grid view'
   
   'north': north
   'n': north
