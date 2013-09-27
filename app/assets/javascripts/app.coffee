@@ -1,8 +1,8 @@
 class App 
   constructor: ->
     @location = new Location()
-    @storage = new Storage()
     @printer = new Printer()
+    @storage = new Storage()
     @commands = new Commands()
     @movement = new Movement()
     @ui = new UI()    

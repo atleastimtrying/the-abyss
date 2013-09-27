@@ -1,5 +1,5 @@
 class window.Movement
-  contructor: (@app)->
+  constructor: (@app)->
     $('body').on('north', @north)
     $('body').on('south', @south)
     $('body').on('east', @east)
