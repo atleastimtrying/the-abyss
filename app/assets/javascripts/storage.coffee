@@ -8,7 +8,7 @@ class window.Storage
       $('body').trigger 'print', 'you will need a modern browser with local storage to persist your game, we reccommend google chrome.'
  
   establishUser: =>
-    $('body').trigger 'getUser', (user)->
+    $('body').trigger 'getUser', (user)=>
       if user
         $('body').trigger 'getLocation',
           x: user.x, 
@@ -25,7 +25,7 @@ class window.Storage
     fn JSON.parse localStorage.getItem 'abyssUser'
 
   createUser: =>
-    @updateUser 0, 0
+    @updateUser null, { x: 0, y: 0 }
 
   updateUser: (event, options)->
     localStorage.setItem 'abyssUser', JSON.stringify options
