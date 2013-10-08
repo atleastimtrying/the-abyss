@@ -3,5 +3,5 @@ class window.Location
     $('body').on('getLocation', @get)
 
   get: (event, options)->
-    $.get 'plots/fetch', {x: options.x, y: options.y}, (data)->
+    $.get 'plots/show', {x: options.x, y: options.y}, (data)->
       options.fn data

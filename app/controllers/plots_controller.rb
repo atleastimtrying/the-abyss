@@ -13,27 +13,6 @@ class PlotsController < ApplicationController
   # GET /plots/1
   # GET /plots/1.json
   def show
-    @plot = Plot.find(plots_params)
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @plot }
-    end
-  end
-
-  # GET /plots/new
-  # GET /plots/new.json
-  def new
-    @plot = Plot.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @plot }
-    end
-  end
-
-  # GET /plots/fetch
-  def fetch
     x = params[:x].to_i
     y = params[:y].to_i
     plot = getPlot x, y
@@ -54,13 +33,24 @@ class PlotsController < ApplicationController
     end
   end
 
+  # GET /plots/new
+  # GET /plots/new.json
+  def new
+    @plot = Plot.new(plots_params)
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @plot }
+    end
+  end
+
   # GET /plots/1/edit
   def edit
     @plot = Plot.find(plots_params)
   end
 
-  # POST /plots
-  # POST /plots.json
+  # POST /create
+  # POST /create.json
   def create
     p = Plot.create(plots_params)
     render json: p
@@ -93,7 +83,9 @@ class PlotsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
   private
+  
   def plots_params
     params.permit(:x, :y, :title, :description)
   end

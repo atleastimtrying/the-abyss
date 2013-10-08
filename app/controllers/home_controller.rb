@@ -2,6 +2,6 @@ class HomeController < ApplicationController
   def index
   end
   def grid
-    @plots = Plot.all
+    @plots = Plot.published
   end
 end

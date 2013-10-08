@@ -15,8 +15,7 @@ class window.UI
       $.post '/plots.json', info, (data)=>
         if data.title
           @closeModal()
-          $('body').trigger 'print', "You look up from your writings to see that the things you have written have come into being, well done."  
-          $('body').trigger('command', 'look')
+          $('body').trigger 'print', "As you finish writing your plot into existence it disappears into the nether,<br> in time if it is worthy the plot will appear in this place."  
 
   readInput: (event)=>
     input = $ event.currentTarget
