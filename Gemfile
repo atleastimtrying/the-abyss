@@ -10,7 +10,7 @@ gem 'sass'
 gem 'coffee-script'
 gem 'jquery-rails'
 gem 'activerecord'
-gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'activeadmin', github: 'gregbell/active_admin', branch: 'rails4'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
