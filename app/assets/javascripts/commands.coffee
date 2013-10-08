@@ -4,7 +4,7 @@ class window.Commands
   
   interpret: (event, command)=>
     if command isnt ''
-      potential = @commands[command]
+      potential = @commands[command.toLowerCase()]
       if potential
         potential() 
       else
