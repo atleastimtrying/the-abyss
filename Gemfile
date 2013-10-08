@@ -6,12 +6,11 @@ gem 'rails', '4.0'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-
 gem 'sass'
 gem 'coffee-script'
-
 gem 'jquery-rails'
-
+gem 'activerecord'
+gem 'activeadmin', github: 'gregbell/active_admin'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

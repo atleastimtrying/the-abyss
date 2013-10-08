@@ -1,4 +1,6 @@
 TheAbyss::Application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   get "home/index"
   get 'plots/fetch' => 'plots#fetch'
   post '/newplot' => 'home#newplot'

@@ -21,6 +21,14 @@ article{
   text-shadow: 1px 1px black;
   padding:8px;
 }
+article h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6{
+  color:#eee;
+}
 aside{
   border-top:1px solid white;
 }
@@ -47,6 +55,7 @@ aside{
 .highlight{
   font-size:17px;
   font-weight:bold;
+  background:none;
 }
 h1{
   font-size:22px;
