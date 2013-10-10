@@ -3,7 +3,7 @@
 <div id="grid-container">
   <div id='grid'>
   <% @plots.each do |plot|  %>
-    <section class="plot" data-x="<%= plot.x %>" data-y="<%= plot.y %>" style='margin-top: <%= plot.y * 100 * -1 %>px; margin-left: <%= plot.x * 100 %>px;' >
+    <section class="plot <%= plot.walls.join(' ') %>" data-x="<%= plot.x %>" data-y="<%= plot.y %>" style='margin-top: <%= plot.y * 100 * -1 %>px; margin-left: <%= plot.x * 100 %>px;' >
       <p><%= plot.title %></p>
       <div class="users"></div>
     </section>

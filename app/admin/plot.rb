@@ -26,7 +26,7 @@ ActiveAdmin.register Plot do
 
   controller do
     def permitted_params
-      params.permit plot: [:x, :y, :title, :description, :published]
+      params.permit plot: [:x, :y, :title, :description, :published, :north_wall, :south_wall, :east_wall, :west_wall]
     end
   end
 end

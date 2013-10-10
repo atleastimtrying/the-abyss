@@ -15,19 +15,15 @@ class PlotsController < ApplicationController
   def show
     x = params[:x].to_i
     y = params[:y].to_i
-    plot = getPlot x, y
-    north = getPlot x, (y.to_i + 1)
-    south = getPlot x, (y.to_i - 1)
-    east = getPlot (x.to_i + 1), y
-    west = getPlot (x.to_i - 1), y
+    plot = getPlot(x, y)
     respond_to do |format|
       format.json { 
         render json: {
           plot: plot, 
-          north: north, 
-          south: south, 
-          east: east, 
-          west: west
+          north: getPlot(x, (y + 1)), 
+          south: getPlot(x, (y - 1)), 
+          east: getPlot((x + 1), y), 
+          west: getPlot((x - 1), y)
         } 
       }
     end

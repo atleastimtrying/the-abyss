@@ -19,19 +19,31 @@ article.grid{
     display:block;
     position: absolute;
     background:white;
-    width:80px;
-    height:80px;
+    width:99px;
+    height:99px;
     padding:8px;
     top:50%;
     left:50%;
     box-sizing:border-box;
-    box-shadow: 4px 4px #eee, 8px 8px #ddd, 12px 12px #ccc;
+    
     p{
       font-size:12px;
       margin-bottom:4px;
       color: #333;
       text-shadow: none;
     }
+  }
+  section.north{
+    border-top:3px solid #aaa;
+  }
+  section.south{
+    border-bottom:3px solid #aaa;
+  }
+  section.east{
+    border-right:3px solid #aaa;
+  }
+  section.west{
+    border-left:3px solid #aaa;
   }
 }
 @media all and (max-height: 700px){
