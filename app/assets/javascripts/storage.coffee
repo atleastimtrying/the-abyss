@@ -2,9 +2,8 @@ class window.Storage
   constructor: ()->
     $('body').on 'getUser', @getUser
     $('body').on 'updateUser', @updateUser
-    if window.localStorage
-      @establishUser()
-    else
+    $('body').on 'establishUser', @establishUser
+    unless window.localStorage
       $('body').trigger 'print', 'you will need a modern browser with local storage to persist your game, we reccommend google chrome.'
  
   establishUser: =>
