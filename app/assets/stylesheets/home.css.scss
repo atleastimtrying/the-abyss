@@ -102,6 +102,18 @@ h2{
     min-height:5em;
     margin-bottom: 8px;
   }
+  #walls{
+    margin-bottom:10px;
+    input,
+    label{
+      display:inline-block;
+      vertical-align: middle;
+      margin-right:10px;
+    }
+    input{
+      margin-right:3px;
+    }
+  }
   button{
     background:#efffef;
     border-radius:4px;

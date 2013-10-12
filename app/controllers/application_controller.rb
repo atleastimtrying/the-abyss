@@ -15,4 +15,8 @@ class ApplicationController < ActionController::Base
     end
     plot
   end
+
+  def getItems (x,y)
+    Item.all.where(:x => x).where(:y => y)
+  end
 end

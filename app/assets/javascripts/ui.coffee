@@ -10,6 +10,10 @@ class window.UI
       info = 
         title: $('#plotTitle').val()
         description: $('#plotContent').html()
+        north_wall: $('#north_wall').prop('checked')
+        south_wall: $('#south_wall').prop('checked')
+        east_wall: $('#east_wall').prop('checked')
+        west_wall: $('west_wall').prop('checked')
         x: user.x
         y: user.y
       $.post '/plots.json', info, (data)=>

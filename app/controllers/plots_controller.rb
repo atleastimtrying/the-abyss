@@ -23,7 +23,8 @@ class PlotsController < ApplicationController
           north: getPlot(x, (y + 1)), 
           south: getPlot(x, (y - 1)), 
           east: getPlot((x + 1), y), 
-          west: getPlot((x - 1), y)
+          west: getPlot((x - 1), y),
+          items: getItems(x,y)
         } 
       }
     end
@@ -83,6 +84,6 @@ class PlotsController < ApplicationController
   private
   
   def plots_params
-    params.permit(:x, :y, :title, :description)
+    params.permit(:x, :y, :title, :description, :north_wall, :south_wall, :east_wall, :west_wall)
   end
 end

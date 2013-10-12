@@ -1,6 +1,6 @@
 class Plot < ActiveRecord::Base
   scope :published, -> { where published: true }
-  scope :unpublished, -> { where published: false }
+  scope :unpublished, -> { where published: [false, nil] }
   scope :pending, -> { unpublished.order('created_at DESC') }
   def walls
     response = []
