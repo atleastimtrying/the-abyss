@@ -29,4 +29,5 @@ TheAbyss::Application.configure do
 
   # Tell the mailer where to get its assets / urls from
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.secret_token = '14c0fb247b7fb0de4180ed200aaf55786ed3a98605447b0060704306efc9dec746fb0dd59abcbc60b091ea49d93bdce37bd042a6ec0b170a385b58ac4699ec82'
 end
